@@ -5,7 +5,7 @@
 Freemodoro is a Pomodoro timer that gives you freedom in setting your work & rest times! 
 
 - instead of a timer, a stopwatch
-- instead of forcing you to stop working, you hit the stop anytime to start the break
+- instead of forcing you to stop working, toggle anytime to switch to break
 - minutes of break is calculated proportionally (work : break = 5:1, 25:5)
 - so your deep work and flow will not be interrupted
 - so you will not take overtime breaks
