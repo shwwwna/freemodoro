@@ -1,8 +1,9 @@
-import { GitHub, HighlightOff, PauseCircleOutline } from "@mui/icons-material";
 import React from "react";
-import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
+import moment from "moment";
+import { useState, useEffect } from "react";
+import { GitHub, HighlightOff, PauseCircleOutline } from "@mui/icons-material";
 
 const Timers = styled.div`
 	display: flex;
@@ -19,6 +20,12 @@ const Wrapper = styled.div`
 	align-items: center;
 	background-color: ${(props) => props.bg};
 	transition: all 0.5s;
+	flex-direction: column;
+
+	/* @media only screen and (max-width: 460px) {
+		align-items: flex-start;
+		padding-left: 1rem;
+	} */
 `;
 
 const Icon = styled.button`
@@ -42,21 +49,22 @@ const Button = styled.button`
 	color: #fff;
 	border-radius: 8px;
 	width: 150px;
-	border: 3px solid black;
+	border: 2px solid black;
 	padding: 6px 12px;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-	transition: all 1ms;
+	transition: box-shadow 0.2s;
 
 	&:hover {
 		background-color: transparent;
 		color: black;
-		border: 3px solid black;
+		box-shadow: 4px 4px 0 #000;
 	}
 	&:active {
 		background-color: white;
+		outline-offset: 1px;
 	}
 `;
 
@@ -66,8 +74,20 @@ const Github = styled.div`
 	position: absolute;
 	top: 0;
 	right: 0;
-	margin: 1rem;
+	padding: 1rem;
 	color: black;
+	opacity: 0.3;
+	font-size: 0.8rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	mix-blend-mode: color-burn;
+`;
+
+const SmallText = styled.span`
+	text-align: center;
+	font-size: 0.6rem;
 `;
 
 const App = () => {
@@ -75,12 +95,14 @@ const App = () => {
 	const [wtimerOn, setWtimerOn] = useState(false);
 	const [rtime, setRtime] = useState(0);
 	const [rtimerOn, setRtimerOn] = useState(false);
+	const [firstTime, setfirstTime] = useState("");
 
 	// to change document title
 	useEffect(() => {
 		function defineTitle() {
 			if (rtimerOn) return format3(rtime) + " REST";
 			if (wtimerOn) return format3(wtime) + " WORK";
+			if (wtime === 0 && rtime === 0) return "LET'S START!";
 			return "PAUSED";
 		}
 
@@ -94,6 +116,10 @@ const App = () => {
 		if (wtimerOn) return "w_favicon.ico";
 		return "p_favicon.ico";
 	}
+
+	useEffect(() => {
+		setfirstTime(moment.now());
+	}, []);
 
 	// work timer
 	useEffect(() => {
@@ -207,6 +233,8 @@ const App = () => {
 					{format(rtime)}
 				</>
 			);
+
+		if (wtime === 0 && rtime === 0) return <Text>Let's start!</Text>;
 		return (
 			<>
 				Work {format2(wtime)} <br />
@@ -239,9 +267,13 @@ const App = () => {
 			</Helmet>
 			<Wrapper bg={defineBackground}>
 				<Github>
-					<a href="https://github.com/shwwwna/freemodoro" target="_blank">
-						<GitHub />
-					</a>
+					<div></div>
+					<div></div>
+					<div>
+						<a href="https://github.com/shwwwna/freemodoro" target="_blank">
+							<GitHub />
+						</a>
+					</div>
 				</Github>
 				<Timers>
 					<Display>
@@ -250,19 +282,24 @@ const App = () => {
 						<br />
 						{defineTimer()}
 					</Display>
-
 					{defineButtons()}
-					<br />
 					<br />
 					<ButtonContainer>
 						<Icon onClick={handlePause}>
 							<PauseCircleOutline />
 						</Icon>
-
 						<Icon onClick={handleClear}>
 							<HighlightOff />
 						</Icon>
+						{/* <Icon>
+							<ArrowCircleDown style={{ transform: "rotate(90deg)" }} />
+						</Icon> */}
 					</ButtonContainer>
+					<SmallText>
+						launched {moment(firstTime).format("h:mm A")}
+						{" - "}
+						{moment(firstTime).fromNow()}
+					</SmallText>
 				</Timers>
 			</Wrapper>
 		</>
