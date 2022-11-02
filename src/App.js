@@ -77,10 +77,14 @@ const App = () => {
 	const [rtimerOn, setRtimerOn] = useState(false);
 
 	useEffect(() => {
-		let title = rtimerOn ? format3(rtime) + " REST" : format3(wtime) + " WORK";
+		function defineTitle() {
+			if (rtimerOn) return format3(rtime) + " REST";
+			if (wtimerOn) return format3(wtime) + " WORK";
+			return "PAUSED";
+		}
 
-		document.title = title;
-	}, [wtime, rtime]);
+		document.title = defineTitle();
+	}, [wtime, rtime, wtimerOn, rtimerOn]);
 
 	useEffect(() => {
 		let interval = null;
@@ -173,14 +177,67 @@ const App = () => {
 	let workDebt = rtime * 5 - wtime;
 	let restDebt = wtime / 5 - rtime;
 
-	let favicon = rtimerOn ? "r_favicon.ico" : "w_favicon.ico";
+	let favicon = defineFavicon();
+
+	function defineFavicon() {
+		if (rtimerOn) return "r_favicon.ico";
+		if (wtimerOn) return "w_favicon.ico";
+		return "p_favicon.ico";
+	}
+
+	function defineMessage() {
+		if (workDebt > 1000) return <>I have to work extra {format2(workDebt)}</>;
+		if (restDebt >= 300000) return <>I deserve rest for {format2(restDebt)}</>;
+		if (rtimerOn && restDebt < 300000 && restDebt > 0)
+			return <>I can rest for at most {format2(restDebt)}</>;
+		return;
+	}
+
+	function defineTimer() {
+		if (wtimerOn)
+			return (
+				<>
+					Work <br /> {format(wtime)}
+				</>
+			);
+		if (rtimerOn)
+			return (
+				<>
+					Rest <br />
+					{format(rtime)}
+				</>
+			);
+		return (
+			<>
+				Work {format2(wtime)} <br />
+				Rest {format2(rtime)}
+			</>
+		);
+	}
+
+	function defineButtons() {
+		if (!wtimerOn && !rtimerOn)
+			return (
+				<>
+					<Button onClick={handleWork}>Work</Button> <br />
+					<Button onClick={handleRest}>Rest</Button>
+				</>
+			);
+		return <Button onClick={handleToggle}>{wtimerOn ? "Rest" : "Work"}</Button>;
+	}
+
+	function defineBackground() {
+		if (rtimerOn) return "#b2dfdb";
+		if (wtimerOn) return "#ffcdd2";
+		return "#fff3e0";
+	}
 
 	return (
 		<>
 			<Helmet>
 				<link rel="icon" type="image/png" href={favicon} sizes="16x16" />
 			</Helmet>
-			<Wrapper bg={rtimerOn ? "#b2dfdb" : "#ffcdd2"}>
+			<Wrapper bg={defineBackground}>
 				<Github>
 					<a href="https://github.com/shwwwna/freemodoro" target="_blank">
 						<GitHub />
@@ -188,43 +245,13 @@ const App = () => {
 				</Github>
 				<Timers>
 					<Display>
-						{workDebt > 1000 ? (
-							<>I have to work more for at least {format2(workDebt)}</>
-						) : (
-							""
-						)}
-						{restDebt >= 300000 ? `I can rest for ${format2(restDebt)}` : ""}
-						{!rtimerOn && (
-							<>
-								<br />
-								<br />
-								Work <br />
-								{format(wtime)}
-							</>
-						)}
-						{rtimerOn && (
-							<>
-								{restDebt < 300000 && restDebt > 0 ? (
-									<>I can rest for at most {format2(restDebt)}</>
-								) : (
-									""
-								)}
-								<br />
-								<br />
-								Rest <br />
-								{format(rtime)}
-							</>
-						)}
+						{defineMessage()}
+						<br />
+						<br />
+						{defineTimer()}
 					</Display>
 
-					{!wtimerOn && !rtimerOn ? (
-						<>
-							<Button onClick={handleWork}>Work</Button> <br />
-							<Button onClick={handleRest}>Rest</Button>
-						</>
-					) : (
-						<Button onClick={handleToggle}>{wtimerOn ? "Rest" : "Work"}</Button>
-					)}
+					{defineButtons()}
 					<br />
 					<br />
 					<ButtonContainer>
