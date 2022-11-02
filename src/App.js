@@ -76,6 +76,7 @@ const App = () => {
 	const [rtime, setRtime] = useState(0);
 	const [rtimerOn, setRtimerOn] = useState(false);
 
+	// to change document title
 	useEffect(() => {
 		function defineTitle() {
 			if (rtimerOn) return format3(rtime) + " REST";
@@ -86,6 +87,15 @@ const App = () => {
 		document.title = defineTitle();
 	}, [wtime, rtime, wtimerOn, rtimerOn]);
 
+	// to change favicon
+	let favicon = defineFavicon();
+	function defineFavicon() {
+		if (rtimerOn) return "r_favicon.ico";
+		if (wtimerOn) return "w_favicon.ico";
+		return "p_favicon.ico";
+	}
+
+	// work timer
 	useEffect(() => {
 		let interval = null;
 
@@ -100,6 +110,7 @@ const App = () => {
 		return () => clearInterval(interval);
 	}, [wtimerOn]);
 
+	// rest timer
 	useEffect(() => {
 		let interval = null;
 
@@ -114,10 +125,7 @@ const App = () => {
 		return () => clearInterval(interval);
 	}, [rtimerOn]);
 
-	//
-	//
-	//
-
+	// buttons
 	function handleWork() {
 		setWtimerOn(true);
 		setRtimerOn(false);
@@ -139,10 +147,8 @@ const App = () => {
 		setRtime(0);
 		handlePause();
 	}
-	//
-	//
-	//
 
+	// to format time
 	function format(t) {
 		let h = Math.floor(t / 60000 / 60);
 		let m = Math.floor((t / 60000) % 60);
@@ -174,17 +180,11 @@ const App = () => {
 		return `${h > 0 ? `${h}h` : ""} ${m}min`;
 	}
 
+	// to calculate debt and credit
 	let workDebt = rtime * 5 - wtime;
 	let restDebt = wtime / 5 - rtime;
 
-	let favicon = defineFavicon();
-
-	function defineFavicon() {
-		if (rtimerOn) return "r_favicon.ico";
-		if (wtimerOn) return "w_favicon.ico";
-		return "p_favicon.ico";
-	}
-
+	// conditionally rendered elements
 	function defineMessage() {
 		if (workDebt > 1000) return <>I have to work extra {format2(workDebt)}</>;
 		if (restDebt >= 300000) return <>I deserve rest for {format2(restDebt)}</>;
