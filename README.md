@@ -26,13 +26,14 @@ To install Freemodoro locally, please follow the steps below:
 
 # Roadmap
 1. localstorage
-1. enable popup mode
+3. option to clear worktime and breaktime every time
+4. notify when break credit = 0
+5. options to set ratio: 5 (easy), 6 (med), 7 (hard)
+6. confirm dialog when clicked clear
+
+3. enable popup mode
 small browser but still show favicon
 1. dark mode toggle
-1. option to clear worktime and breaktime every time
-1. notify when break credit = 0
-1. options to set ratio: 5 (easy), 6 (med), 7 (hard)
-2. confirm dialog when clicked clear
 
 # Source
 
