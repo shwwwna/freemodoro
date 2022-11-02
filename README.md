@@ -31,6 +31,7 @@ To install Freemodoro locally, please follow the steps below:
 - sound notify when break credit = 0
 - option to set ratio: 5 (easy), 6 (med), 7 (hard)
 - confirm dialog when clicked clear
+- popup modal on how to use
 
 **Aesthetic**
 - all settings/options tucked in a popup modal
