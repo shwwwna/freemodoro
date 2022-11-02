@@ -1,70 +1,50 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Freemodoro - Dynamic Pomodoro
+# https://freemodoro.vercel.app/
 
-## Available Scripts
+Freemodoro is a Pomodoro timer that gives you freedom in setting your work & rest times! 
 
-In the project directory, you can run:
+- instead of a timer, a stopwatch
+- instead of forcing you to stop working, toggle anytime to switch to break
+- minutes of break is calculated proportionally (work : break = 5:1, 25:5)
+- so your deep work and flow will not be interrupted
+- so you will not take overtime breaks
 
-### `npm start`
+# Built with
+  - React
+  - Styled-components
+  - Material UI Icons
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To install Freemodoro locally, please follow the steps below:
+  - Clone repo to your machine
+  - Open the root of the project and install all dependencies with `npm i` 
+  - Project has various scripts to run:
+    - `npm start` - running local version
+    - `npm run test` - run tests
 
-### `npm test`
+# Roadmap
+1. localstorage
+1. refactor for switch case / nested conditionals
+	 display mode for paused: 
+	- white background; 
+	- show both work and rest; 
+	- title: PAUSED
+1. display time page is first loaded, intl relativetimeformat
+"working since 00:00 PM <1 hour ago / n hours ago"
+1. popup mode
+small browser, show favicon
+1. dark mode toggle
+1. option to clear worktime and breaktime every time
+1. notify when break credit = 0
+1. options to set ratio: 5 (easy), 6 (med), 7 (hard)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Source
 
-### `npm run build`
+The code of this repository is inspired by https://github.com/Vandesm14/ratio-timer
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Contact
+Have suggestions, errors, or want to contribute?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contact Sheena at shwwwna@gmail.com
