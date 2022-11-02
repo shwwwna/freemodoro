@@ -154,10 +154,6 @@ const App = () => {
 	}
 
 	function format2(t) {
-		// let minutes = Math.floor(millis / 60000);
-		// let seconds = ((millis % 60000) / 1000).toFixed(0);
-		// return `${minutes}:${seconds < 10 ? "0" : "" + seconds} `;
-
 		let h = Math.floor(t / 60000 / 60);
 		let m = Math.floor((t / 60000) % 60);
 		let s = Math.floor((t / 1000) % 60);
@@ -168,10 +164,6 @@ const App = () => {
 	}
 
 	function format3(t) {
-		// let minutes = Math.floor(millis / 60000);
-		// let seconds = ((millis % 60000) / 1000).toFixed(0);
-		// return `${minutes}:${seconds < 10 ? "0" : "" + seconds} `;
-
 		let h = Math.floor(t / 60000 / 60);
 		let m = Math.floor((t / 60000) % 60);
 
@@ -190,7 +182,7 @@ const App = () => {
 			</Helmet>
 			<Wrapper bg={rtimerOn ? "#b2dfdb" : "#ffcdd2"}>
 				<Github>
-					<a href="">
+					<a href="https://github.com/shwwwna/freemodoro" target="_blank">
 						<GitHub />
 					</a>
 				</Github>
