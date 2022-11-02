@@ -25,15 +25,18 @@ To install Freemodoro locally, please follow the steps below:
     - `npm run test` - run tests
 
 # Roadmap
-1. localstorage
-3. option to clear worktime and breaktime every time
-4. notify when break credit = 0
-5. options to set ratio: 5 (easy), 6 (med), 7 (hard)
-6. confirm dialog when clicked clear
+**Functional**
+- store in localstorage
+- option to clear worktime and breaktime every time
+- sound notify when break credit = 0
+- option to set ratio: 5 (easy), 6 (med), 7 (hard)
+- confirm dialog when clicked clear
 
-3. enable popup mode
-small browser but still show favicon
-1. dark mode toggle
+**Aesthetic**
+- all settings/options tucked in a popup modal
+- enable popup mode: small browser but still show favicon
+- dark mode toggle
+- toggle align left, center, right
 
 # Source
 
