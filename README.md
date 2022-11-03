@@ -33,13 +33,17 @@ To install Freemodoro locally, please follow the steps below:
 - store in localstorage
 - option to clear worktime and breaktime every time
 - random quote on begin
+
 - toggle to show to-do: max 3 items, draggable
+
 
 **Aesthetic**
 - all settings/options tucked in a popup modal
 - enable popup mode: small browser but still show favicon
 - dark mode toggle
 - toggle align left, center, right
+
+- launch in Product Hunt
 
 # Source
 
