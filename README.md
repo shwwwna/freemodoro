@@ -16,12 +16,16 @@ Freemodoro is a Pomodoro timer that gives you both freedom and discipline in set
   - Material UI Icons
 
 # Roadmap
+**Aesthetic**
+- [ ] fix timer alignment = numbers fixed with : in between
+- [ ] background color changes deeper in time
+- [ ] fix elements alignment = must not move so much when page updates
+
 **Functional**
 - [ ] sound when clicked Work / Rest
 - [ ] sound notify when break credit = 0
 - [ ] button to enable popup mode: small browser but still show favicon
 - [ ] random quote on begin
-- [ ] toggle to show to-do: max 3 items, draggable
 
 **Settings and options**
 - [ ] option to clear worktime and breaktime every time
@@ -29,9 +33,16 @@ Freemodoro is a Pomodoro timer that gives you both freedom and discipline in set
 - [ ] toggle align left or center
 
 **Store**
-- [ ] option to set ratio: 5 (easy), 6 (med), 7 (hard)
-- [ ] log previous work & rest times, find out your rhythm
-- [ ] edit previous work & rest times - can remove and add
+- [ ] Ratio
+  - [ ] option to set ratio: 5 (easy), 6 (med), 7 (hard)
+- [ ] Time log
+  - [ ] log previous work & rest times
+  - [ ] edit previous work & rest times - can remove and add
+  - [ ] chart = work & break time length, time of day. find out your rhythm
+- [ ] To do
+  - [ ] toggle to show to-do: rearrangeable
+  - [ ] show date today
+- [ ] Log in
 
 **Other**
 - [ ] launch in Product Hunt
