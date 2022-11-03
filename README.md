@@ -1,5 +1,5 @@
 
-# Freemodoro - Dynamic Pomodoro
+# Freemodoro - Flexible & Dynamic Pomodoro
 # https://freemodoro.vercel.app/
 
 Freemodoro is a Pomodoro timer that gives you both freedom and discipline in setting your work & rest times! 
