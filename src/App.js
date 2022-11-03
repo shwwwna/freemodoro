@@ -3,8 +3,14 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import moment from "moment";
 import { useState, useEffect } from "react";
-import { GitHub, HighlightOff, PauseCircleOutline } from "@mui/icons-material";
+import { HighlightOff, PauseCircleOutline } from "@mui/icons-material";
 import { format, format2, format3 } from "./utils/Format";
+import Modal from "./components/Modal";
+// import useSound from "use-sound";
+
+//
+// STYLED COMPONENTS
+//
 
 const Timers = styled.div`
 	display: flex;
@@ -12,6 +18,10 @@ const Timers = styled.div`
 	justify-content: center;
 	flex-direction: column;
 	text-align: center;
+`;
+
+const Timer = styled.div`
+	margin-top: 2rem;
 `;
 
 const Wrapper = styled.div`
@@ -23,6 +33,7 @@ const Wrapper = styled.div`
 	transition: all 0.5s;
 	flex-direction: column;
 
+	/* TODO option to align left or center */
 	/* @media only screen and (max-width: 460px) {
 		align-items: flex-start;
 		padding-left: 1rem;
@@ -40,8 +51,8 @@ const Display = styled.div`
 	margin-bottom: 20px;
 `;
 
-const Text = styled.span`
-	font-size: 36px;
+const H1 = styled.span`
+	font-size: 2.3rem;
 `;
 
 const Button = styled.button`
@@ -56,34 +67,35 @@ const Button = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-	transition: box-shadow 0.2s;
+	transition: all 0.2s;
+	margin-bottom: 1rem;
 
 	&:hover {
-		background-color: transparent;
+		background-color: white;
 		color: black;
 		box-shadow: 4px 4px 0 #000;
 	}
 	&:active {
-		background-color: white;
+		background-color: transparent;
 		outline-offset: 1px;
 	}
 `;
 
 const ButtonContainer = styled.div``;
 
-const Github = styled.div`
+const Bar = styled.div`
 	position: absolute;
 	top: 0;
 	right: 0;
 	padding: 1rem;
-	color: black;
-	opacity: 0.3;
 	font-size: 0.8rem;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: end;
 	width: 100%;
 	mix-blend-mode: color-burn;
+	color: #000000;
+	opacity: 0.3;
 `;
 
 const SmallText = styled.span`
@@ -91,19 +103,32 @@ const SmallText = styled.span`
 	font-size: 0.6rem;
 `;
 
+const Span = styled.span`
+	display: block;
+`;
+
+//
+// DEFINE APP
+//
+
 const App = () => {
-	const [wtime, setWtime] = useState(0);
+	const [wtime, setWtime] = useState(
+		JSON.parse(localStorage.getItem("wtime")) || 0
+	);
 	const [wtimerOn, setWtimerOn] = useState(false);
-	const [rtime, setRtime] = useState(0);
+	const [rtime, setRtime] = useState(
+		JSON.parse(localStorage.getItem("rtime")) || 0
+	);
 	const [rtimerOn, setRtimerOn] = useState(false);
 	const [firstTime, setfirstTime] = useState("");
+	const [ratio, setRatio] = useState(5);
 
 	// to change document title
 	useEffect(() => {
 		function title() {
 			if (rtimerOn) return format3(rtime) + " REST";
 			if (wtimerOn) return format3(wtime) + " WORK";
-			if (wtime === 0 && rtime === 0) return "LET'S START!";
+			if (wtime === 0 && rtime === 0) return "LET'S GO!";
 			return `PAUSED - ${format3(wtime)} WORK`;
 		}
 
@@ -154,8 +179,12 @@ const App = () => {
 	}, [rtimerOn]);
 
 	// to calculate debt and credit
-	let workDebt = rtime * 5 - wtime;
-	let restDebt = wtime / 5 - rtime;
+	let workDebt = rtime * ratio - wtime;
+	let restDebt = wtime / ratio - rtime;
+
+	// // sound effects
+	// const [success] = useSound("/sounds/pop-down.mp3", { volume: 1 });
+	// const [fail] = useSound("/sounds/pop-up-on.mp3", { volume: 0.25 });
 
 	// buttons
 	function handleWork() {
@@ -173,11 +202,25 @@ const App = () => {
 	function handlePause() {
 		setWtimerOn(false);
 		setRtimerOn(false);
+		saveTimes();
 	}
+	function saveTimes() {
+		localStorage.setItem("wtime", JSON.stringify(wtime));
+		localStorage.setItem("rtime", JSON.stringify(rtime));
+	}
+
 	function handleClear() {
+		if (window.confirm("Are you sure you want to clear session?") === true) {
+			actuallyClear();
+		}
+	}
+
+	function actuallyClear() {
 		setWtime(0);
 		setRtime(0);
 		handlePause();
+		localStorage.clear();
+		window.location.reload();
 	}
 
 	// conditionally rendered elements
@@ -193,22 +236,23 @@ const App = () => {
 		if (wtimerOn)
 			return (
 				<>
-					Work <br /> {format(wtime)}
+					Work
+					{format(wtime)}
 				</>
 			);
 		if (rtimerOn)
 			return (
 				<>
-					Rest <br />
+					Rest
 					{format(rtime)}
 				</>
 			);
 
-		if (wtime === 0 && rtime === 0) return <Text>Let's start!</Text>;
+		if (!wtime && !rtime) return <H1>Let's go!</H1>;
 		return (
 			<>
-				Work {format2(wtime)} <br />
-				Rest {format2(rtime)}
+				<Span>Work {format2(wtime)}</Span>
+				<Span>Rest {format2(rtime)}</Span>
 			</>
 		);
 	}
@@ -217,7 +261,7 @@ const App = () => {
 		if (!wtimerOn && !rtimerOn)
 			return (
 				<>
-					<Button onClick={handleWork}>Work</Button> <br />
+					<Button onClick={handleWork}>Work</Button>
 					<Button onClick={handleRest}>Rest</Button>
 				</>
 			);
@@ -230,30 +274,24 @@ const App = () => {
 		return "#fff3e0";
 	}
 
+	//
+	// RENDERED APP
+	//
 	return (
 		<>
 			<Helmet>
 				<link rel="icon" type="image/png" href={favicon} sizes="16x16" />
 			</Helmet>
 			<Wrapper bg={defineBackground}>
-				<Github>
-					<div></div>
-					<div></div>
-					<div>
-						<a href="https://github.com/shwwwna/freemodoro" target="_blank">
-							<GitHub />
-						</a>
-					</div>
-				</Github>
+				<Bar>
+					<Modal />
+				</Bar>
 				<Timers>
 					<Display>
 						{defineMessage()}
-						<br />
-						<br />
-						{defineTimer()}
+						<Timer>{defineTimer()}</Timer>
 					</Display>
 					{defineButtons()}
-					<br />
 					<ButtonContainer>
 						<Icon onClick={handlePause}>
 							<PauseCircleOutline />
@@ -261,14 +299,14 @@ const App = () => {
 						<Icon onClick={handleClear}>
 							<HighlightOff />
 						</Icon>
-						{/* <Icon>
-							<ArrowCircleDown style={{ transform: "rotate(90deg)" }} />
-						</Icon> */}
 					</ButtonContainer>
 					<SmallText>
-						launched {moment(firstTime).format("h:mm A")}
-						{" - "}
-						{moment(firstTime).fromNow()}
+						launched{" "}
+						{moment(firstTime).format("h:mm A") +
+							" - " +
+							moment(firstTime).fromNow()}{" "}
+						<br />
+						{!wtimerOn && !rtimerOn && (wtime || rtime) ? "session saved" : ""}
 					</SmallText>
 				</Timers>
 			</Wrapper>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const Text = styled.span`
 	font-size: 36px;
+	margin: 1rem 0;
 `;
 
 // to format time
