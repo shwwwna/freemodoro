@@ -21,15 +21,17 @@ Freemodoro is a Pomodoro timer that gives you both freedom and discipline in set
 - [ ] sound notify when break credit = 0
 - [ ] button to enable popup mode: small browser but still show favicon
 - [ ] random quote on begin
-- [ ] log previous work & rest times, find out your rhythm
 - [ ] toggle to show to-do: max 3 items, draggable
 
-
 **Settings and options**
-- [ ] option to set ratio: 5 (easy), 6 (med), 7 (hard)
 - [ ] option to clear worktime and breaktime every time
 - [ ] dark mode toggle
 - [ ] toggle align left or center
+
+**Store**
+- [ ] option to set ratio: 5 (easy), 6 (med), 7 (hard)
+- [ ] log previous work & rest times, find out your rhythm
+- [ ] edit previous work & rest times - can remove and add
 
 **Other**
 - [ ] launch in Product Hunt
