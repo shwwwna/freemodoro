@@ -1,5 +1,5 @@
 
-# Freemodoro - Dynamic Pomodoro
+# Freemodoro - Flexible & Dynamic Pomodoro
 # https://freemodoro.vercel.app/
 
 Freemodoro is a Pomodoro timer that gives you both freedom and discipline in setting your work & rest times! 
@@ -26,23 +26,22 @@ To install Freemodoro locally, please follow the steps below:
 
 # Roadmap
 **Functional**
-- popup modal on how to use
-- confirm dialog when clicked clear
 - sound notify when break credit = 0
-- option to set ratio: 5 (easy), 6 (med), 7 (hard)
-- store in localstorage
-- option to clear worktime and breaktime every time
+- button to enable popup mode: small browser but still show favicon
 - random quote on begin
+- log previous work & rest times, find out your rhythm
 
 - toggle to show to-do: max 3 items, draggable
 
 
-**Aesthetic**
-- all settings/options tucked in a popup modal
-- enable popup mode: small browser but still show favicon
+**Settings and options**
+- option to set ratio: 5 (easy), 6 (med), 7 (hard)
+- option to clear worktime and breaktime every time
 - dark mode toggle
-- toggle align left, center, right
 
+- toggle align left or center
+
+**Other**
 - launch in Product Hunt
 
 # Source
