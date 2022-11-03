@@ -93,9 +93,8 @@ const Bar = styled.div`
 	align-items: center;
 	justify-content: end;
 	width: 100%;
-	mix-blend-mode: color-burn;
 	color: #000000;
-	opacity: 0.3;
+	opacity: 0.5;
 `;
 
 const SmallText = styled.span`
