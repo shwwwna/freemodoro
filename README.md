@@ -22,6 +22,7 @@ Freemodoro is a Pomodoro timer that gives you both freedom and discipline in set
 - [ ] button to enable popup mode: small browser but still show favicon
 - [ ] random quote on begin
 - [ ] log previous work & rest times, find out your rhythm
+- [ ] edit previous work & rest times - can remove and add
 - [ ] toggle to show to-do: max 3 items, draggable
 
 
