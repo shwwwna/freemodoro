@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import moment from "moment";
 import { useState, useEffect } from "react";
 import { GitHub, HighlightOff, PauseCircleOutline } from "@mui/icons-material";
+import { format, format2, format3 } from "./utils/Format";
 
 const Timers = styled.div`
 	display: flex;
@@ -99,14 +100,14 @@ const App = () => {
 
 	// to change document title
 	useEffect(() => {
-		function defineTitle() {
+		function title() {
 			if (rtimerOn) return format3(rtime) + " REST";
 			if (wtimerOn) return format3(wtime) + " WORK";
 			if (wtime === 0 && rtime === 0) return "LET'S START!";
-			return "PAUSED";
+			return `PAUSED - ${format3(wtime)} WORK`;
 		}
 
-		document.title = defineTitle();
+		document.title = title();
 	}, [wtime, rtime, wtimerOn, rtimerOn]);
 
 	// to change favicon
@@ -117,6 +118,7 @@ const App = () => {
 		return "p_favicon.ico";
 	}
 
+	// to set time launched
 	useEffect(() => {
 		setfirstTime(moment.now());
 	}, []);
@@ -151,6 +153,10 @@ const App = () => {
 		return () => clearInterval(interval);
 	}, [rtimerOn]);
 
+	// to calculate debt and credit
+	let workDebt = rtime * 5 - wtime;
+	let restDebt = wtime / 5 - rtime;
+
 	// buttons
 	function handleWork() {
 		setWtimerOn(true);
@@ -173,42 +179,6 @@ const App = () => {
 		setRtime(0);
 		handlePause();
 	}
-
-	// to format time
-	function format(t) {
-		let h = Math.floor(t / 60000 / 60);
-		let m = Math.floor((t / 60000) % 60);
-		let s = Math.floor((t / 1000) % 60);
-
-		return (
-			<div>
-				{h > 0 && <Text>{h.slice(-2)}:</Text>}
-				<Text>{("0" + m).slice(-2)}:</Text>
-				<Text>{("0" + s).slice(-2)}</Text> <br />
-			</div>
-		);
-	}
-
-	function format2(t) {
-		let h = Math.floor(t / 60000 / 60);
-		let m = Math.floor((t / 60000) % 60);
-		let s = Math.floor((t / 1000) % 60);
-
-		return `${h > 0 ? `${h.slice(-2)}:` : ""}${("0" + m).slice(-2)}:${(
-			"0" + s
-		).slice(-2)}`;
-	}
-
-	function format3(t) {
-		let h = Math.floor(t / 60000 / 60);
-		let m = Math.floor((t / 60000) % 60);
-
-		return `${h > 0 ? `${h}h` : ""} ${m}min`;
-	}
-
-	// to calculate debt and credit
-	let workDebt = rtime * 5 - wtime;
-	let restDebt = wtime / 5 - rtime;
 
 	// conditionally rendered elements
 	function defineMessage() {
