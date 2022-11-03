@@ -20,6 +20,7 @@ const boxStyle = {
 	bgcolor: "background.paper",
 	boxShadow: 24,
 	p: 4,
+	lineHeight: 1.3,
 };
 
 const buttonStyle = {
@@ -34,6 +35,7 @@ const Li = styled.li`
 	display: flex;
 	align-items: center;
 	list-style: circle;
+	margin-top: 1rem;
 `;
 
 const SmallText = styled.span`
@@ -61,10 +63,8 @@ export default function BasicModal() {
 				<Box sx={boxStyle}>
 					{/* TODO Settings */
 					/* <H2>Settings</H2>
-					Align: Left - Center <br /> */
-					/* Theme: Light - Dark <br /> */
-					/* <br />
-					<br /> */}
+					Align: Left - Center */
+					/* Theme: Light - Dark */}
 					<H2>How to use</H2>
 					<ol>
 						<li>
@@ -85,14 +85,11 @@ export default function BasicModal() {
 								<i>I deserve rest for ___</i>
 							</li>
 						</ul>
-						<br />
 					</ol>
 					<Li>
 						<PauseCircleOutline /> to pause and save session
 					</Li>
 					Session will NOT be saved otherwise
-					<br />
-					<br />
 					<Li>
 						<HighlightOff /> to clear session
 					</Li>
@@ -117,9 +114,7 @@ export default function BasicModal() {
 								<Instagram />
 							</a>
 						</div>
-						<div>
-							Made by Sheena with so much 💖 <br />
-						</div>
+						<div>Made by Sheena with so much 💖</div>
 					</SmallText>
 				</Box>
 			</Modal>
