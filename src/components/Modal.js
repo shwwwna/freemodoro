@@ -47,6 +47,13 @@ const SmallText = styled.span`
 	margin-top: 2rem;
 `;
 
+const IconContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 30%;
+`;
+
 export default function BasicModal() {
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => setOpen(true);
@@ -94,26 +101,26 @@ export default function BasicModal() {
 						<HighlightOff /> to clear session
 					</Li>
 					<SmallText>
-						<div>
-							<a
-								href="https://github.com/shwwwna/freemodoro"
-								target="_blank"
-								rel="noreferrer">
-								<GitHub />
-							</a>
+						<IconContainer>
 							<a
 								href="https://twitter.com/shwwwna"
 								target="_blank"
 								rel="noreferrer">
-								<Twitter />
+								<Twitter fontSize="small" />
+							</a>
+							<a
+								href="https://github.com/shwwwna/freemodoro"
+								target="_blank"
+								rel="noreferrer">
+								<GitHub fontSize="large" />
 							</a>
 							<a
 								href="https://www.instagram.com/shwwwna/"
 								target="_blank"
 								rel="noreferrer">
-								<Instagram />
+								<Instagram fontSize="small" />
 							</a>
-						</div>
+						</IconContainer>
 						<div>Made by Sheena with so much 💖</div>
 					</SmallText>
 				</Box>

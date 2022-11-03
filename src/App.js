@@ -295,10 +295,12 @@ const App = () => {
 					{defineButtons()}
 					<ButtonContainer>
 						<Icon onClick={handlePause}>
-							<PauseCircleOutline />
+							<PauseCircleOutline
+								color={!wtimerOn && !rtimerOn ? "disabled" : ""}
+							/>
 						</Icon>
 						<Icon onClick={handleClear}>
-							<HighlightOff />
+							<HighlightOff color={!wtime && !rtime ? "disabled" : ""} />
 						</Icon>
 					</ButtonContainer>
 					<SmallText>
