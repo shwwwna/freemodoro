@@ -15,6 +15,25 @@ Freemodoro is a Pomodoro timer that gives you both freedom and discipline in set
   - Styled-components
   - Material UI Icons
 
+# Roadmap
+**Functional**
+- [ ] sound when clicked Work / Rest
+- [ ] sound notify when break credit = 0
+- [ ] button to enable popup mode: small browser but still show favicon
+- [ ] random quote on begin
+- [ ] log previous work & rest times, find out your rhythm
+- [ ] toggle to show to-do: max 3 items, draggable
+
+
+**Settings and options**
+- [ ] option to set ratio: 5 (easy), 6 (med), 7 (hard)
+- [ ] option to clear worktime and breaktime every time
+- [ ] dark mode toggle
+- [ ] toggle align left or center
+
+**Other**
+- [ ] launch in Product Hunt
+
 # Installation
 
 To install Freemodoro locally, please follow the steps below:
@@ -24,26 +43,6 @@ To install Freemodoro locally, please follow the steps below:
     - `npm start` - running local version
     - `npm run test` - run tests
 
-# Roadmap
-**Functional**
-- sound notify when break credit = 0
-- button to enable popup mode: small browser but still show favicon
-- random quote on begin
-- log previous work & rest times, find out your rhythm
-
-- toggle to show to-do: max 3 items, draggable
-
-
-**Settings and options**
-- option to set ratio: 5 (easy), 6 (med), 7 (hard)
-- option to clear worktime and breaktime every time
-- dark mode toggle
-
-- toggle align left or center
-
-**Other**
-- launch in Product Hunt
-
 # Source
 
 This repository is inspired by https://github.com/Vandesm14/ratio-timer
@@ -51,4 +50,4 @@ This repository is inspired by https://github.com/Vandesm14/ratio-timer
 # Contact
 Have suggestions, errors, or want to contribute?
 
-Contact Sheena at shwwwna@gmail.com
+Please contact me at shwwwna@gmail.com
