@@ -33,6 +33,7 @@ To install Freemodoro locally, please follow the steps below:
 - store in localstorage
 - option to clear worktime and breaktime every time
 - random quote on begin
+- 
 - toggle to show to-do: max 3 items, draggable
 
 **Aesthetic**
