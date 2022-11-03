@@ -41,6 +41,8 @@ To install Freemodoro locally, please follow the steps below:
 - dark mode toggle
 - toggle align left, center, right
 
+- launch in Product Hunt
+
 # Source
 
 This repository is inspired by https://github.com/Vandesm14/ratio-timer
