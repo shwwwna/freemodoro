@@ -15,15 +15,6 @@ Freemodoro is a Pomodoro timer that gives you both freedom and discipline in set
   - Styled-components
   - Material UI Icons
 
-# Installation
-
-To install Freemodoro locally, please follow the steps below:
-  - Clone repo to your machine
-  - Open the root of the project and install all dependencies with `npm i` 
-  - Project has various scripts to run:
-    - `npm start` - running local version
-    - `npm run test` - run tests
-
 # Roadmap
 **Functional**
 - [ ] sound when clicked Work / Rest
@@ -42,6 +33,15 @@ To install Freemodoro locally, please follow the steps below:
 
 **Other**
 - [ ] launch in Product Hunt
+
+# Installation
+
+To install Freemodoro locally, please follow the steps below:
+  - Clone repo to your machine
+  - Open the root of the project and install all dependencies with `npm i` 
+  - Project has various scripts to run:
+    - `npm start` - running local version
+    - `npm run test` - run tests
 
 # Source
 
