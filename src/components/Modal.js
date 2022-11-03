@@ -83,13 +83,13 @@ export default function BasicModal() {
 						<li>Follow the messages</li>
 						<ul>
 							<li>
-								<i>I have to work extra ___</i>
+								<i>I have to work extra...</i>
 							</li>
 							<li>
-								<i>I can rest for at most ___</i>
+								<i>I can rest for at most...</i>
 							</li>
 							<li>
-								<i>I deserve rest for ___</i>
+								<i>I deserve rest for...</i>
 							</li>
 						</ul>
 					</ol>

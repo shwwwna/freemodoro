@@ -182,9 +182,9 @@ const App = () => {
 	let workDebt = rtime * ratio - wtime;
 	let restDebt = wtime / ratio - rtime;
 
-	// // sound effects
-	// const [success] = useSound("/sounds/pop-down.mp3", { volume: 1 });
-	// const [fail] = useSound("/sounds/pop-up-on.mp3", { volume: 0.25 });
+	// sound effects
+	// const [playSuccess] = useSound("./assets/success.mp3", { volume: 0.25 });
+	// const [playNotify] = useSound("./assets/notify.mp3", { volume: 0.25 });
 
 	// buttons
 	function handleWork() {
