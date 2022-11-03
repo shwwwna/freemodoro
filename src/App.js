@@ -226,8 +226,9 @@ const App = () => {
 	// conditionally rendered elements
 	function defineMessage() {
 		if (workDebt > 1000) return <>I have to work extra {format2(workDebt)}</>;
-		if (restDebt >= 300000) return <>I deserve rest for {format2(restDebt)}</>;
-		if (rtimerOn && restDebt < 300000 && restDebt > 0)
+		if (rtimerOn && restDebt >= 300000)
+			return <>I deserve rest for {format2(restDebt)}</>;
+		if (rtimerOn && restDebt > 0 && restDebt < 300000)
 			return <>I can rest for at most {format2(restDebt)}</>;
 		return;
 	}
