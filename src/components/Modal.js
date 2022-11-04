@@ -123,7 +123,8 @@ export default function BasicModal() {
 						</IconContainer>
 						<div>
 							Made with so much 💖 <br />
-							Android app coming soon
+							Android app coming soon <br />
+							Ideal browser size: 630 x 420px
 						</div>
 					</SmallText>
 				</Box>

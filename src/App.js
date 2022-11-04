@@ -6,32 +6,18 @@ import { useState, useEffect } from "react";
 import { HighlightOff, PauseCircleOutline } from "@mui/icons-material";
 import { format, format2, format3 } from "./utils/Format";
 import Modal from "./components/Modal";
+import Tabs from "./pages/Tabs";
 // import useSound from "use-sound";
 
 //
 // STYLED COMPONENTS
 //
 
-const Timers = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	text-align: center;
-`;
-
-const Timer = styled.div`
-	margin-top: 2rem;
-`;
-
-const Wrapper = styled.div`
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+// DIVIDERS
+const Background = styled.div`
+	height: 100%;
 	background-color: ${(props) => props.bg};
 	transition: all 0.5s;
-	flex-direction: column;
 
 	/* TODO option to align left or center */
 	/* @media only screen and (max-width: 460px) {
@@ -40,16 +26,54 @@ const Wrapper = styled.div`
 	} */
 `;
 
-const Icon = styled.button`
-	cursor: pointer;
-	background: none;
-	border: none;
-	font-size: large;
+const Bar = styled.div`
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 1rem;
+	font-size: 0.8rem;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	width: 100%;
+	color: #000000;
+	opacity: 0.5;
+`;
+
+const PageOne = styled.div`
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+`;
+
+const Wrapper = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 `;
 
 const Display = styled.div`
 	margin-bottom: 20px;
 `;
+
+const Timer = styled.div`
+	margin-top: 2rem;
+`;
+
+const PageTwo = styled.div`
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+`;
+
+const IconContainer = styled.div``;
+
+// ELEMENTS
 
 const H1 = styled.span`
 	font-size: 2.3rem;
@@ -64,9 +88,9 @@ const Button = styled.button`
 	border: 2px solid black;
 	padding: 6px 12px;
 	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
+	display: block;
+	/* align-items: center;
+	justify-content: space-evenly; */
 	transition: all 0.2s;
 	margin-bottom: 1rem;
 
@@ -81,20 +105,11 @@ const Button = styled.button`
 	}
 `;
 
-const ButtonContainer = styled.div``;
-
-const Bar = styled.div`
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 1rem;
-	font-size: 0.8rem;
-	display: flex;
-	align-items: center;
-	justify-content: end;
-	width: 100%;
-	color: #000000;
-	opacity: 0.5;
+const Icon = styled.button`
+	cursor: pointer;
+	background: none;
+	border: none;
+	font-size: large;
 `;
 
 const SmallText = styled.span`
@@ -283,36 +298,43 @@ const App = () => {
 			<Helmet>
 				<link rel="icon" type="image/png" href={favicon} sizes="16x16" />
 			</Helmet>
-			<Wrapper bg={defineBackground}>
+			<Background bg={defineBackground}>
 				<Bar>
 					<Modal />
 				</Bar>
-				<Timers>
-					<Display>
-						{defineMessage()}
-						<Timer>{defineTimer()}</Timer>
-					</Display>
-					{defineButtons()}
-					<ButtonContainer>
-						<Icon onClick={handlePause}>
-							<PauseCircleOutline
-								color={!wtimerOn && !rtimerOn ? "disabled" : ""}
-							/>
-						</Icon>
-						<Icon onClick={handleClear}>
-							<HighlightOff color={!wtime && !rtime ? "disabled" : ""} />
-						</Icon>
-					</ButtonContainer>
-					<SmallText>
-						launched{" "}
-						{moment(firstTime).format("h:mm A") +
-							" - " +
-							moment(firstTime).fromNow()}{" "}
-						<br />
-						{!wtimerOn && !rtimerOn && (wtime || rtime) ? "session saved" : ""}
-					</SmallText>
-				</Timers>
-			</Wrapper>
+				<PageOne>
+					<Wrapper>
+						<Display>
+							{defineMessage()}
+							<Timer>{defineTimer()}</Timer>
+						</Display>
+						{defineButtons()}
+						<IconContainer>
+							<Icon onClick={handlePause}>
+								<PauseCircleOutline
+									color={!wtimerOn && !rtimerOn ? "disabled" : ""}
+								/>
+							</Icon>
+							<Icon onClick={handleClear}>
+								<HighlightOff color={!wtime && !rtime ? "disabled" : ""} />
+							</Icon>
+						</IconContainer>
+						<SmallText>
+							launched{" "}
+							{moment(firstTime).format("h:mm A") +
+								" - " +
+								moment(firstTime).fromNow()}{" "}
+							<br />
+							{!wtimerOn && !rtimerOn && (wtime || rtime)
+								? "session saved"
+								: ""}
+						</SmallText>
+					</Wrapper>
+				</PageOne>
+				<PageTwo>
+					<Tabs />
+				</PageTwo>
+			</Background>
 		</>
 	);
 };
