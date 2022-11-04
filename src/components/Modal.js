@@ -121,7 +121,10 @@ export default function BasicModal() {
 								<Instagram fontSize="small" />
 							</a>
 						</IconContainer>
-						<div>Made by Sheena with so much 💖</div>
+						<div>
+							Made with so much 💖 <br />
+							Android app coming soon
+						</div>
 					</SmallText>
 				</Box>
 			</Modal>

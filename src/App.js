@@ -142,10 +142,11 @@ const App = () => {
 		return "p_favicon.ico";
 	}
 
-	// to set time launched
+	// to set time launched = page is first loaded
+	// TODO: when wtime is changed, not when page is first loaded
 	useEffect(() => {
 		setfirstTime(moment.now());
-	}, []);
+	}, [wtime]);
 
 	// work timer
 	useEffect(() => {
