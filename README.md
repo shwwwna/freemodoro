@@ -26,6 +26,7 @@ Freemodoro is a Pomodoro timer that gives you both freedom and discipline in set
 - [ ] sound notify when break credit = 0
 - [ ] button to enable popup mode: small browser but still show favicon
 - [ ] random quote on begin
+- [ ] confirm on refresh
 
 **Settings and options**
 - [ ] option to clear worktime and breaktime every time
