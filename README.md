@@ -29,6 +29,7 @@ Freemodoro is a Pomodoro timer that gives you both freedom and discipline in set
 - [ ] confirm on refresh
 
 **Settings and options**
+- [ ] option to hide seconds
 - [ ] option to clear worktime and breaktime every time
 - [ ] dark mode toggle
 - [ ] toggle align left or center
