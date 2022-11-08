@@ -20,6 +20,7 @@ Freemodoro is a Pomodoro timer that gives you both freedom and discipline in set
 - [ ] fix timer alignment = numbers fixed with : in between
 - [ ] background color changes deeper in time
 - [ ] fix elements alignment = must not move so much when page updates
+- [ ] cursor not allowed when pause and clear are disabled
 
 **Functional**
 - [ ] sound when clicked Work / Rest
