@@ -14,7 +14,7 @@ function format(t) {
 
 	return (
 		<div>
-			{h > 0 && <Text>{h.slice(-2)}:</Text>}
+			{h > 0 && <Text>{h}:</Text>}
 			<Text>{("0" + m).slice(-2)}:</Text>
 			<Text>{("0" + s).slice(-2)}</Text> <br />
 		</div>
@@ -26,9 +26,7 @@ function format2(t) {
 	let m = Math.floor((t / 60000) % 60);
 	let s = Math.floor((t / 1000) % 60);
 
-	return `${h > 0 ? `${h.slice(-2)}:` : ""}${("0" + m).slice(-2)}:${(
-		"0" + s
-	).slice(-2)}`;
+	return `${h > 0 ? `${h}:` : ""}${("0" + m).slice(-2)}:${("0" + s).slice(-2)}`;
 }
 
 function format3(t) {
