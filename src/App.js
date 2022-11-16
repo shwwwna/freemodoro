@@ -271,6 +271,7 @@ const App = () => {
 
 	function defineBackground() {
 		if (rtimerOn) return "#b2dfdb";
+		if (rtimerOn && workDebt > 1000) return "#4db6ac";
 		if (wtimerOn) return "#ffcdd2";
 		return "#fff3e0";
 	}
