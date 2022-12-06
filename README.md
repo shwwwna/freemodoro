@@ -32,6 +32,7 @@ Freemodoro is a Pomodoro timer that gives you both freedom and discipline in set
 **Settings and options**
 - [ ] option to hide seconds
 - [ ] option to clear worktime and breaktime every time
+- [ ] option to be notified when wtime = 30; rtime = 0
 - [ ] dark mode toggle
 - [ ] toggle align left or center
 
