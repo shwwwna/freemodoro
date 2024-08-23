@@ -21,14 +21,16 @@ const Timers = styled.div`
 `;
 
 const Timer = styled.div`
-  margin-top: 2rem;
+  //   margin-top: 2rem;
+  font-weight: bold;
 `;
 
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  padding-right: 1rem;
   background-color: ${(props) => props.bg};
   transition: all 0.5s;
   flex-direction: column;
@@ -79,6 +81,58 @@ const Button = styled.button`
     background-color: transparent;
     outline-offset: 1px;
   }
+`;
+
+const ButtonSmall = styled.button`
+  background-color: transparent;
+  //   color: black;
+  border-radius: 8px;
+  //   width: fit-content;
+  //   border: 2px solid black;
+  padding: 6px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 4px 4px 0 #000;
+  }
+  &:active {
+    background-color: transparent;
+    outline-offset: 1px;
+  }
+`;
+
+const ButtonRest = styled.button`
+  background-color: transparent;
+  //   color: black;
+  //   border-radius: 8px;
+  //   width: fit-content;
+  border: none;
+  border-bottom: 1px transparent solid;
+  //   padding: 6px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+
+  &:hover {
+    border-bottom: 1px black solid;
+    //   background-color: white;
+    //   color: black;
+    //   box-shadow: 4px 4px 0 #000;
+  }
+  //   &:active {
+  //     background-color: transparent;
+  //     outline-offset: 1px;
+  //   }
 `;
 
 const ButtonContainer = styled.div``;
@@ -262,15 +316,13 @@ const App = () => {
     if (!wtimerOn && !rtimerOn)
       return (
         <>
-          <Button onClick={handleWork}>Work</Button>
-          <Button onClick={handleRest}>Rest</Button>
+          <ButtonSmall onClick={handleWork}>Work</ButtonSmall>
+          <ButtonRest onClick={handleRest}>Rest</ButtonRest>
         </>
       );
-    return (
-      <Button onClick={handleToggle}>
-        {wtimerOn ? "Rest now" : "Work now"}
-      </Button>
-    );
+    if (wtimerOn)
+      return <ButtonRest onClick={handleToggle}>Rest now</ButtonRest>;
+    return <ButtonSmall onClick={handleToggle}>Work now</ButtonSmall>;
   }
 
   function defineBackground() {
@@ -289,9 +341,9 @@ const App = () => {
         <link rel="icon" type="image/png" href={favicon} sizes="16x16" />
       </Helmet>
       <Wrapper bg={defineBackground}>
-        <Bar>
+        {/* <Bar>
           <Modal />
-        </Bar>
+        </Bar> */}
         <Timers>
           <Display>
             {defineMessage()}
